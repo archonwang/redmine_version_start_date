@@ -6,3 +6,7 @@ Redmine::Plugin.register :redmine_version_start_date do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 end
+
+Dir[File.expand_path('../lib/redmine_version_start_date', __FILE__) << '/*.rb'].each do |file|
+  require_dependency file
+end

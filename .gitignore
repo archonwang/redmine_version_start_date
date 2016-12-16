@@ -1,0 +1,7 @@
+npm-debug.log
+.DS_Store
+/tmp
+
+# for vim
+*.swp
+*.swo

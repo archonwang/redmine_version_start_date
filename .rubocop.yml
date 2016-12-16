@@ -1,0 +1,16 @@
+Rails:
+ Enabled: true
+
+Style/AsciiComments:
+ Enabled: false
+
+Style/Documentation:
+ Enabled: false
+
+Style/BlockDelimiters:
+ EnforcedStyle: semantic
+ Exclude:
+   - spec/**/*
+
+Metrics/LineLength:
+ Max: 136
