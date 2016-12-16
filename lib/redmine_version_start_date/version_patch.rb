@@ -10,7 +10,8 @@ module RedmineVersionStartDate
       alias_method :origin_start_date, :start_date
       alias_method :start_date, :mod_start_date
       alias_method :start_date=, :mod_start_date=
-      safe_attributes :start_date_version_attributes
+      safe_attributes :start_date,
+                      :start_date_version_attributes
       accepts_nested_attributes_for :start_date_version
     end
 
