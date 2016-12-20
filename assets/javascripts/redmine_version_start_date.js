@@ -8,3 +8,9 @@ $(function(){
     }
   });
 })
+
+$(document).ready(function(){
+  var $effective_date_field = $('#version_effective_date').parent();
+  var $start_date_field = $('#version_start_date').parent();
+  $effective_date_field.before($start_date_field.show());
+})
