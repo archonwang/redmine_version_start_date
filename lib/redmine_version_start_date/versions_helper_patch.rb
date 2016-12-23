@@ -4,10 +4,11 @@ module RedmineVersionStartDate
   module VersionsHelperPatch
     extend ActiveSupport::Concern
 
-    def start_date_distance_in_words(date)
-      if date && date > Date.today
-        l(:label_roadmap_start_in, distance_of_date_in_words(Date.today, date))
-      end
+    def start_date_distance_in_words(date, options = {})
+      I18n.with_options locale: options[:locale] do |locale|
+        locale.t(:label_roadmap_start_in,
+                 value: distance_of_date_in_words(Time.zone.today, date))
+      end if date && date > Time.zone.today
     end
   end
 
