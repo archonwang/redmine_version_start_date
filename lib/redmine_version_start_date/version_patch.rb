@@ -6,10 +6,11 @@ module RedmineVersionStartDate
 
     included do
       unloadable
-      has_one :start_date_version, dependent: :destroy
-      alias_method :origin_start_date, :start_date
-      alias_method :start_date, :mod_start_date
+
+      alias_method_chain :start_date, :mod_start_date
       alias_method :start_date=, :mod_start_date=
+
+      has_one :start_date_version, dependent: :destroy
       safe_attributes :start_date,
                       :start_date_version_attributes
       accepts_nested_attributes_for :start_date_version
@@ -20,11 +21,11 @@ module RedmineVersionStartDate
       start_date_version.start_date = val
     end
 
-    def mod_start_date
+    def start_date_with_mod_start_date
       if start_date_version.present? && start_date_version.start_date.present?
         start_date_version.start_date
       else
-        origin_start_date
+        start_date_without_mod_start_date
       end
     end
   end
