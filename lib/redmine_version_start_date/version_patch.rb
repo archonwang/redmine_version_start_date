@@ -5,8 +5,6 @@ module RedmineVersionStartDate
     extend ActiveSupport::Concern
 
     included do
-      unloadable
-
       alias_method_chain :start_date, :mod_start_date
       alias_method :start_date=, :mod_start_date=
 
