@@ -1,14 +1,11 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class StartDateVersionTest < ActiveSupport::TestCase
-  fixtures :projects, :users, :issues, :issue_statuses, :trackers,
-           :enumerations, :versions, :projects_trackers
+  fixtures :projects, :users, :issues, :issue_statuses, :trackers, :enumerations, :versions, :projects_trackers
 
   test '#start_date should be start_date of StartDateVersion without start_date of Issue' do
     start_date = Time.zone.today
-    version = Version.create project: Project.find(1),
-                             name: '1.1',
-                             start_date: start_date
+    version = Version.create project: Project.find(1), name: '1.1', start_date: start_date
     add_issue(version, start_date: 7.days.ago)
 
     assert_equal start_date, version.start_date
@@ -40,6 +37,7 @@ class StartDateVersionTest < ActiveSupport::TestCase
       fixed_version: version,
       subject: 'Test',
       author: User.first,
-      tracker: version.project.trackers.first}.merge(attributes))
+      tracker: version.project.trackers.first
+    }.merge(attributes))
   end
 end

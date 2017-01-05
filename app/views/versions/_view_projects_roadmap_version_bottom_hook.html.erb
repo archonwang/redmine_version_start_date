@@ -1,7 +1,6 @@
 <%
   if version.start_date.present? && version.effective_date.present?
-    @version_period =
-      "#{format_date(version.start_date)} - #{format_date(version.effective_date)}"
+    @version_period = "#{format_date(version.start_date)} - #{format_date(version.effective_date)}"
   elsif version.effective_date.present?
     @version_period = format_date(version.effective_date)
   end
