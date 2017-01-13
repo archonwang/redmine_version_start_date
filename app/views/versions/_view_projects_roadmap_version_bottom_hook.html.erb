@@ -1,0 +1,10 @@
+<% @version_period = version_period(version) %>
+<% if version.completed? %>
+  <p class='redmine_version_start_date'><%= @version_period %></p>
+<% elsif version.start_date.present? && Time.zone.today < version.start_date %>
+  <p class='redmine_version_start_date'><strong><%= start_date_distance_in_words(version.start_date) %></strong> (<%= @version_period %>)</p>
+<% elsif version.effective_date.present? %>
+  <p class='redmine_version_start_date'><strong><%= due_date_distance_in_words(version.effective_date) %></strong> (<%= @version_period %>)</p>
+<% else %>
+  <p class='redmine_version_start_date none'></p>
+<% end %>
