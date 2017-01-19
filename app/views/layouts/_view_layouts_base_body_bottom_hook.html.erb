@@ -1,7 +1,11 @@
 <% if @version.present? && ('versions' == params[:controller]) && ['new', 'edit'].include?(params[:action]) %>
   <p style='display: none;'>
     <%= label :version, :start_date %>
-    <%= text_field :version, :start_date, size: 10, value: @version.start_date %>
+    <% if Redmine::VERSION.to_s.to_f < 3.3 %>
+      <%= text_field :version, :start_date, size: 10 %>
+    <% else %>
+      <%= date_field :version, :start_date, size: 10 %>
+    <% end %>
     <%= calendar_for('version_start_date') %>
   </p>
 <% end %>
