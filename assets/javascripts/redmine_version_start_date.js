@@ -1,6 +1,10 @@
 $(function(){
-  var $org_elements =
-    $('.controller-versions.action-index h3.version + p, .controller-versions.action-show #roadmap > p:first-child');
+  var selectors = [
+    '.controller-versions.action-index h3.version + p',
+    '#roadmap > p:first-child',
+    '.version-overview > p:first-child'
+  ];
+  var $org_elements = $(selectors.join(','));
   var $mod_elements = $('.redmine_version_start_date');
   $.each($mod_elements, function(i, mod_element){
     if(!$(mod_element).hasClass('none')){
